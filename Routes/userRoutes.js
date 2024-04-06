@@ -8,4 +8,7 @@ router.post(
     userController.isUserExisting,
     userController.registerUser
 );
+
+// route for login 
+router.post("/login", userController.loginUser)
 module.exports = router;
