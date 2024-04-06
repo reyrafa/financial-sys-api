@@ -9,7 +9,7 @@ const userRoutes = require("./Routes/userRoutes.js");
 
 // mongoDB connection
 mongoose.connect(
-    "mongodb+srv://admin:admin@cluster0.5xsehfc.mongodb.net/FinancialSys?retryWrites=true&w=majority&appName=Cluster0"
+    "mongodb+srv://admin:admin@cluster0.5xsehfc.mongodb.net/FinancialSys?retryWrites=true&w=majority"
 );
 const db = mongoose.connection;
 db.on("error", console.error.bind(console, "Connection Error"));
