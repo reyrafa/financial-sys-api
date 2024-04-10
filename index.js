@@ -6,6 +6,7 @@ const app = express();
 
 // routes
 const userRoutes = require("./Routes/userRoutes.js");
+const memberRoutes = require("./Routes/memberRoutes.js");
 
 // mongoDB connection
 mongoose.connect(
@@ -22,6 +23,7 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(cors());
 app.use("/user", userRoutes);
+app.use("/member", memberRoutes);
 
 app.listen(port, () => {
     console.log(`Server is running at port: ${port}`);
