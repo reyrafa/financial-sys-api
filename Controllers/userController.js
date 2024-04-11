@@ -90,4 +90,24 @@ const loginUser = async (request, response) => {
     }
 };
 
-module.exports = { isUserExisting, registerUser, loginUser };
+// fetch logged user
+const fetchLoggedUser = async (request, response) => {
+    try {
+        const user = await User.findById(request.user.id);
+        if (!user) {
+            return response.status(404).json({
+                fetch: "failed",
+                message: "user not found",
+            });
+        }
+        user.password = "";
+        return response.status(200).json({
+            fetch: "success",
+            user: user,
+        });
+    } catch (error) {
+        response.status(500).json({ error: "Internal server error" });
+    }
+};
+
+module.exports = { isUserExisting, registerUser, loginUser, fetchLoggedUser };
