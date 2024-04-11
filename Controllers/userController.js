@@ -110,4 +110,29 @@ const fetchLoggedUser = async (request, response) => {
     }
 };
 
-module.exports = { isUserExisting, registerUser, loginUser, fetchLoggedUser };
+// fetch all user
+const fetchUsers = async (request, response) => {
+    try {
+        const user = User.find({});
+        if (user.length === 0) {
+            return response
+                .status(404)
+                .json({ fetch: "not found", message: "No user registered" });
+        }
+        return response.status(200).json({
+            fetch: "success",
+            user: user
+        })
+    } catch (error) {
+        response.status(500).json({ eror: "Internal server error" });
+    }
+};
+
+
+module.exports = {
+    isUserExisting,
+    registerUser,
+    loginUser,
+    fetchLoggedUser,
+    fetchUsers,
+};

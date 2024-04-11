@@ -15,4 +15,6 @@ router.post("/login", userController.loginUser);
 
 // fetch logged user
 router.get("/profile", auth.verifyToken, userController.fetchLoggedUser);
+
+// fetch all user
 module.exports = router;
