@@ -17,4 +17,10 @@ router.post("/login", userController.loginUser);
 router.get("/profile", auth.verifyToken, userController.fetchLoggedUser);
 
 // fetch all user
+router.get(
+    "/lists",
+    auth.verifyToken,
+    auth.verifyAdmin,
+    userController.fetchUsers
+);
 module.exports = router;
