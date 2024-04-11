@@ -113,7 +113,7 @@ const fetchLoggedUser = async (request, response) => {
 // fetch all user
 const fetchUsers = async (request, response) => {
     try {
-        const user = User.find({});
+        const user = await User.find({});
         if (user.length === 0) {
             return response
                 .status(404)
@@ -121,13 +121,12 @@ const fetchUsers = async (request, response) => {
         }
         return response.status(200).json({
             fetch: "success",
-            user: user
-        })
+            user: user,
+        });
     } catch (error) {
         response.status(500).json({ eror: "Internal server error" });
     }
 };
-
 
 module.exports = {
     isUserExisting,
